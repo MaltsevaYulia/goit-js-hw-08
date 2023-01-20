@@ -16,7 +16,7 @@ onPagaloading()
 function onInputChange(evt) {
     formData[evt.target.name]=evt.target.value
     localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
-    console.log(formData);
+    // console.log(formData);
 }
 
 function onPagaloading() {
