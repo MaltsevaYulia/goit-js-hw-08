@@ -22,13 +22,26 @@ function onInputChange(evt) {
 function onPagaloading() {
     const localStorageData = localStorage.getItem(STORAGE_KEY);
     // console.log("🚀 localStorageDat", localStorageData)
-
+    // console.log(JSON.parse(localStorageData).email);
+    
     if(localStorageData){
         
-        refs.input.value=JSON.parse(localStorageData).email
-        refs.textarea.value=JSON.parse(localStorageData).message
-
+        if (JSON.parse(localStorageData).email){
+            formData.email=JSON.parse(localStorageData).email
+            refs.input.value=JSON.parse(localStorageData).email
+        } 
+    
+        if (JSON.parse(localStorageData).message){
+            formData.message=JSON.parse(localStorageData).message
+            refs.textarea.value=JSON.parse(localStorageData).message
+        } 
     }
+    // if(localStorageData){
+    //     formData.email=JSON.parse(localStorageData).email
+    //     formData.message=JSON.parse(localStorageData).message
+    //     refs.input.value=JSON.parse(localStorageData).email
+    //     refs.textarea.value=JSON.parse(localStorageData).message
+    // }
 }
 
 function onSubmit(evt) {
@@ -38,6 +51,7 @@ function onSubmit(evt) {
     evt.target.reset() ;
     console.log(localStorageObj);
     localStorage.removeItem(STORAGE_KEY);
-    
+    formData.email=''
+    formData.message=''
 
 }
